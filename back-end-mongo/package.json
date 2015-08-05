@@ -1,0 +1,27 @@
+{
+  "name": "mongo-vs-mysql",
+  "version": "1.0.0",
+  "description": "Comparativo criado entre o Mongo DB e MySql",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "npm install",
+    "start": "nodemon bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cindyyonemi/mongo-vs-mysql.git"
+  },
+  "author": "Cindy Hosoya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cindyyonemi/mongo-vs-mysql/issues"
+  },
+  "homepage": "https://github.com/cindyyonemi/mongo-vs-mysql",
+  "dependencies": {
+    "body-parser": "^1.12.3",
+    "cors": "^2.7.1",
+    "express": "^4.12.3",
+    "mongoose": "^4.0.2"
+  }
+}
