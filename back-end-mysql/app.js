@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 /* Config API */
 app.use('/api/v1/products', require('./modules/product/routes'));
-app.use('/api/v1/orders', require('./modules/order/routes'));
 app.use('/api/v1/clients', require('./modules/client/routes'));
+app.use('/api/v1/orders', require('./modules/order/routes'));
 
 module.exports = app;

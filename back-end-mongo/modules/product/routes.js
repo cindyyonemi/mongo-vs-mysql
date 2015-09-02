@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var Client = require('./model');
+var Product = require('./model');
 
 router.get('/', function(req, res) {
-	Client.find({}, function(err, data) {
+	Product.find({}, function(err, data) {
 		if (err) {
 			res.sendStatus(500);
 		} else {
@@ -15,7 +15,7 @@ router.get('/', function(req, res) {
 router.get('/:id', function(req, res) {
 	var query = { _id: req.params.id };
 
-	Client.findOne(query, function(err, data) {
+	Product.findOne(query, function(err, data) {
 		if (err) {
 			res.sendStatus(404);
 		} else {
@@ -25,9 +25,9 @@ router.get('/:id', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-	var client = new Client(req.body);
-     
-	client.save(function(err, data) {
+	var product = new Product(req.body);
+
+	product.save(function(err, data) {
 		if (err) {
 			res.status(400).json(err);
 		} else {
@@ -41,7 +41,7 @@ router.put('/:id', function(req, res) {
 	var mod = req.body;
 	delete mod._id;
 
-	Client.update(query, mod, function(err, data) {
+	Product.update(query, mod, function(err, data) {
 		if (err) {
 			res.status(400).json(err);
 		} else {
@@ -53,7 +53,7 @@ router.put('/:id', function(req, res) {
 router.delete('/:id', function(req, res) {
 	var query = { _id: req.params.id };
 
-	Client.remove(query, function(err, data) {
+	Product.remove(query, function(err, data) {
 		if (err) {
 			res.status(400).json(err);
 		} else {

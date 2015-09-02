@@ -1,0 +1,5 @@
+<ul data-ng-init="vm.initList()">
+	<li data-ng-repeat="order in vm.orders" >
+		Nome: {{ order.cliente.name }} - CPF: {{ order.cliente.CPF }} - Desconto: {{ order.desconto }} - Forma de Pagamento: {{ order.formaPgto }}
+	</li>
+</ul>

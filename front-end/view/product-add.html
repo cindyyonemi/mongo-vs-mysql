@@ -1,0 +1,11 @@
+<form data-ng-init="vm.initPersist()" data-ng-submit="vm.save(vm.product)">
+	<label>Descrição:</label>
+	<input type="text" required data-ng-model="vm.product.descricao">
+	<label>Valor Unitário:</label>
+	<input type="number" required data-ng-model="vm.product.valorUnitario">
+	<label>Quantidade em estoque:</label>
+	<input type="number" required data-ng-model="vm.product.qtdEstoque">
+
+	<button type="submit">Save</button>
+
+</form>

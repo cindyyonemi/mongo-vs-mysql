@@ -4,7 +4,9 @@
 
 	angular.module('mongoVsMySql').constant('api', 
 		{
-			clients: resourceOf('clients')
+			clients: resourceOf('clients'),
+			products: resourceOf('products'),
+			orders: resourceOf('orders')
 		}
 	);
 

@@ -1,0 +1,35 @@
+<form data-ng-init="vm.initPersist()" data-ng-submit="vm.save(vm.order)">
+
+	<label>Desconto:</label>
+	<input type="number" required data-ng-model="vm.order.desconto">
+	<label>Valor Total:</label>
+	<input type="number" required data-ng-model="vm.order.valorTotal">
+	<label>Forma Pagamento:</label>
+	<input type="text" required data-ng-model="vm.order.formaPgto">
+
+	<label>Cliente:</label>
+		<select required data-ng-model="vm.order.cliente">
+			<option data-ng-repeat="cli in vm.clientes" value="{{cli}}">{{cli.CPF}} - {{cli.name}}</option>
+		</select>
+
+	<fieldset>
+		<label>Produto:</label>
+		<select required data-ng-model="vm.item.produto">
+			<option data-ng-repeat="prod in vm.produtos" value="{{prod}}">{{prod.descricao}}</option>
+		</select>
+
+		<label>Quantidade:</label>
+		<input type="text" required data-ng-model="vm.item.quantidade">
+
+		<button type="button" ng-click="vm.addItem(vm.item)">Add</Button>
+
+		<ul>
+			<li data-ng-repeat="itemP in vm.order.itemPedido" >
+				Produto: {{ itemP.produto.descricao }} - Quantidade: {{ itemP.quantidade }}
+			</li>
+		</ul>
+	</fieldset>
+
+	<button type="submit">Save</button>
+
+</form>

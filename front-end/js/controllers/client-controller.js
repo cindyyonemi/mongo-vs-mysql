@@ -3,9 +3,9 @@
 
 	angular.module('mongoVsMySql').controller('ClientController', controller);
 
-	controller.$inject = ['$routeParams', 'ClientService'];
+	controller.$inject = ['$routeParams', 'ClientService', '$filter'];
 
-	function controller($routeParams, clientService) {
+	function controller($routeParams, clientService, $filter) {
 		var vm = this;
 
 		vm.initList = function () {
@@ -22,7 +22,6 @@
 
 		vm.save = function(client) {
 			clientService.save(client).success(function(data) {
-				console.log(data);
 				alert('Cliente Salvo!');
 				vm.client = {};
 			});
