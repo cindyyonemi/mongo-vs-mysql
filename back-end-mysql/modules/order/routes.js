@@ -18,15 +18,18 @@ router.get('/:id', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-	var order = Order.create(req.body);
-	console.log(order);
-	order.addCliente(req.body.cliente);
-	console.log(order);
 	db.transaction(function (t) {
-		return order.save({transaction: t});
+		return Order.create(req.body, {transaction: t}).then(function(order){
+			for (var i = req.body.itemPedido.length - 1; i >= 0; i--) {
+				item = req.body.itemPedido[i];
+				order.addProduto(item.produto.id,{ quantidade : item.quantidade }, {transaction: t});
+			};
+			order.setCliente(req.body.cliente.id, {transaction: t});
+		});
 	}).then(function(result){
 		res.json(result);
-	}).catch(function(){
+	}).catch(function(e){
+		console.log(e);
 		res.sendStatus(404);
 	});
 });

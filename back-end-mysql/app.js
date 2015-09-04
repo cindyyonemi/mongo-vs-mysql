@@ -16,4 +16,6 @@ app.use('/api/v1/products', require('./modules/product/routes'));
 app.use('/api/v1/clients', require('./modules/client/routes'));
 app.use('/api/v1/orders', require('./modules/order/routes'));
 
+require('./modules/item-product/model.js')
+
 module.exports = app;

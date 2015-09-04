@@ -43,7 +43,7 @@
 		vm.addItem = function(item){
 			item.produto = JSON.parse(item.produto);
 			vm.order.itemPedido.push(item);
-			item = {};
+			vm.item = {};
 		}
 
 	}
