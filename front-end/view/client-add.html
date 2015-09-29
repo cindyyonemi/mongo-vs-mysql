@@ -1,24 +1,34 @@
 <form data-ng-init="vm.initPersist()" data-ng-submit="vm.save(vm.client)">
 	<label>Nome:</label>
 	<input type="text" required data-ng-model="vm.client.name">
+	<br>
 	<label>CPF:</label>
 	<input type="text" required data-ng-model="vm.client.CPF">
+	<br>
 	<label>Data de Nascimento:</label>
 	<input type="date" required data-ng-model="vm.client.dataNascimento">
+	<br>
 	<label>Telefone:</label>
 	<input type="text" required data-ng-model="vm.client.telefone">
+	<br>
 	<label>Rua:</label>
 	<input type="text" required data-ng-model="vm.client.rua">
+	<br/>
 	<label>Número:</label>
 	<input type="text" required data-ng-model="vm.client.numero">
+	<br>
 	<label>Bairro:</label>
 	<input type="text" required data-ng-model="vm.client.bairro">
+	<br>
 	<label>CEP:</label>
 	<input type="number" required data-ng-model="vm.client.CEP">
+	<br>
 	<label>Cidade:</label>
 	<input type="text" required data-ng-model="vm.client.cidade">
+	<br>
 	<label>Estado:</label>
 	<input type="text" required data-ng-model="vm.client.estado">
+	<br>
 
 	<button type="submit">Save</button>
 

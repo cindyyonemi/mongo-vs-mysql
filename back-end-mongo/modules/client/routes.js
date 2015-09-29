@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Client = require('./model');
+var Order = require('../order/model');
 
 router.get('/', function(req, res) {
 	Client.find({}, function(err, data) {
@@ -61,5 +62,57 @@ router.delete('/:id', function(req, res) {
 		}
 	});
 });
+
+router.get('/ByCidade/:cidade', function(req, res) {
+	var query = { cidade: req.params.cidade};
+
+	Client.find(query, function(err, data) {
+		if (err) {
+			res.sendStatus(404);
+		} else {
+			res.json(data);
+		}
+	});
+});
+
+router.get('/juncao/ByCidade/:cidade', function(req, res) {
+	var query = { cidade: req.params.cidade};
+	Client.find(query)
+		.populate('orders')
+		.exec(function (err, data) {
+		if (err) {
+			res.sendStatus(404);
+		} else {
+			next(0, data, res);
+		}
+	});
+});
+
+router.get('/juncao/id', function(req, res) {
+	Client.find({})
+		.populate('orders')
+		.exec(function (err, data) {
+		if (err) {
+			res.sendStatus(404);
+		} else {
+			next(0, data, res);
+		}
+	});
+});
+
+function next(i, array, res){
+	cliente = array[i];
+	Order.find({cliente : cliente._id})
+		.exec(function (err, orders) {
+		cliente.orders = orders;
+		if(i < array.length-1){
+			next(i+1, array, res);
+		}else{
+			res.json(array);
+		}
+	});
+}
+
+
 
 module.exports = router;

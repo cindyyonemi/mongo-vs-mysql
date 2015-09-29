@@ -22,6 +22,7 @@ var Order = db.define('order', {
   freezeTableName: true // Model tableName will be the same as the model name
 });
 
+Client.hasMany(Order);
 Order.belongsTo(Client, {as: 'cliente'});
 
 module.exports = Order;
